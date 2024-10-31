@@ -1,0 +1,294 @@
+/* ==========================================================================
+    SidebarLeft.css - Tabla de Contenido
+    ==========================================================================
+    1. Estilos del Contenedor Principal del Sidebar
+    2. Navegación dentro del Sidebar
+    3. Secciones Individuales
+    4. Cabecera de cada Sección
+    5. Título de la Sección
+    6. Icono de la Sección
+    7. Lista de Elementos
+    8. Items Individuales de la Lista
+    9. Enlaces y Botones dentro de la Lista
+    10. Comportamiento Sticky solo en PC
+    11. Estilos Específicos para Móviles
+    12. Ajustes para Pantallas Muy Pequeñas
+    13. Media Queries para Tablet
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* 1. Estilos del Contenedor Principal del Sidebar */
+/* -------------------------------------------------------------------------- */
+.sidebar-left {
+    grid-area: left;
+    background-color: transparent;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    overflow-y: auto; /* Permite scroll en el sidebar si es necesario */
+    height: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Navegación dentro del Sidebar */
+/* -------------------------------------------------------------------------- */
+.sidebar-left__nav {
+    padding: 1.5rem 1rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Secciones Individuales */
+/* -------------------------------------------------------------------------- */
+.sidebar-section {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Cabecera de cada Sección */
+/* -------------------------------------------------------------------------- */
+.sidebar-section__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidebar-section__header:hover {
+    background-color: var(--hover-bg);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. Título de la Sección */
+/* -------------------------------------------------------------------------- */
+.sidebar-section__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+    text-align: left;
+    flex-grow: 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. Icono de la Sección */
+/* -------------------------------------------------------------------------- */
+.sidebar-section__icon {
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 0.5rem;
+}
+
+.sidebar-section__header[aria-expanded="true"] .sidebar-section__icon {
+    transform: rotate(180deg);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 7. Lista de Elementos */
+/* -------------------------------------------------------------------------- */
+.sidebar-section__list {
+    list-style: none;
+    padding: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    margin: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 8. Items Individuales de la Lista */
+/* -------------------------------------------------------------------------- */
+.sidebar-section__list--expanded {
+    max-height: 500px;
+    opacity: 1;
+    padding: 0.5rem;
+}
+
+.sidebar-section__item {
+    margin-bottom: 0.5rem;
+    transform: translateX(-10px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sidebar-section__list--expanded .sidebar-section__item {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 9. Enlaces y Botones dentro de la Lista */
+/* -------------------------------------------------------------------------- */
+.sidebar-section__link,
+.sidebar-section__button {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    text-align: left;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.sidebar-section__link:hover,
+.sidebar-section__button:hover {
+    background-color: var(--hover-bg);
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.sidebar-section__link--active,
+.sidebar-section__button--active {
+    background-color: var(--active-bg);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 10. Comportamiento Sticky solo en PC */
+/* -------------------------------------------------------------------------- */
+@media (min-width: 769px) {
+    .sidebar-left {
+        position: sticky;
+        top: 20px;
+        height: calc(100vh - 40px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    }
+
+    .sidebar-left::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .sidebar-left::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .sidebar-left::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 11. Estilos Específicos para Móviles */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .sidebar-left {
+        position: relative;
+        height: auto;
+        overflow: visible;
+    }
+
+    .sidebar-left__nav {
+        padding: 1rem;
+    }
+
+    .sidebar-section {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Optimizar animaciones para móviles */
+    .sidebar-section__list {
+        transition: all 0.2s ease-out;
+    }
+
+    .sidebar-section__item {
+        transform: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .sidebar-section__link:hover,
+    .sidebar-section__button:hover {
+        transform: none;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 12. Ajustes para Pantallas Muy Pequeñas */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+    .sidebar-left__nav {
+        padding: 0.5rem;
+    }
+
+    .sidebar-section__header {
+        padding: 0.8rem;
+    }
+
+    .sidebar-section__title {
+        font-size: 1rem;
+    }
+
+    .sidebar-section__link,
+    .sidebar-section__button {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 13. Media Queries para Tablet */
+/* -------------------------------------------------------------------------- */
+@media (min-width: 481px) and (max-width: 1024px) {
+    .sidebar-left {
+        position: relative;
+        height: auto;
+        overflow: visible;
+        background-color: #fff;
+        backdrop-filter: none;
+        padding: 0 1rem;
+    }
+
+    .sidebar-left__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .sidebar-section {
+        margin-bottom: 0;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+    }
+
+    .sidebar-section__list {
+        transition: all 0.2s ease-out;
+    }
+
+    .sidebar-section__list--expanded {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajuste automático de columnas */
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .sidebar-section__item {
+        width: 100%; /* Asegura que los items ocupen todo el ancho disponible */
+    }
+
+    .sidebar-section__link,
+    .sidebar-section__button {
+        width: 100%;
+        padding: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+}

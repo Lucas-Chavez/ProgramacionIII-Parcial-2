@@ -1,0 +1,176 @@
+/* ==========================================================================
+    Store.css - Tabla de Contenido
+    ==========================================================================
+    1. Estilos de la cuadrícula de productos
+    2. Tarjeta de producto
+    3. Estilos para mensajes vacíos en la tienda
+    4. Ajustes responsivos
+    ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* 1. Estilos de la cuadrícula de productos                                   */
+/* -------------------------------------------------------------------------- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 220px); /* Ancho más compacto */
+    justify-content: center;
+    gap: 1.5rem; /* Reducido el espacio entre tarjetas */
+    padding: 1.5rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px; /* Reducido el ancho máximo del contenedor */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Tarjeta de producto                                                    */
+/* -------------------------------------------------------------------------- */
+.product-card {
+    width: 220px; /* Ancho más compacto para la tarjeta */
+    background: white;
+    border-radius: 6px; /* Reducido el radio del borde */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    margin: 0 auto;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+}
+
+.product-card__image-container {
+    width: 100%;
+    height: 160px; /* Altura reducida para la imagen */
+    overflow: hidden;
+}
+
+.product-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-card__content {
+    padding: 0.875rem; /* Padding reducido */
+}
+
+.product-card__title {
+    font-size: 1.1rem; /* Tamaño de fuente reducido */
+    font-weight: 600;
+    margin: 0 0 0.375rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-card__category {
+    color: #666;
+    font-size: 0.813rem;
+    margin: 0 0 0.375rem 0;
+}
+
+.product-card__price {
+    font-size: 1.25rem; /* Tamaño de fuente reducido */
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0 0 0.875rem 0;
+}
+
+.product-card__button {
+    width: 100%;
+    padding: 0.625rem; /* Padding reducido */
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 0.875rem; /* Tamaño de fuente reducido */
+}
+
+.product-card__button:hover {
+    background-color: var(--hover-color);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Estilos para mensajes vacíos en la tienda                               */
+/* -------------------------------------------------------------------------- */
+.store-empty-message {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 1.25rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Ajustes responsivos                                                    */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, 200px);
+    }
+
+    .product-card {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, 180px);
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .product-card {
+        width: 180px;
+    }
+
+    .product-card__image-container {
+        height: 140px;
+    }
+
+    .product-card__content {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, 160px);
+        gap: 0.875rem;
+        padding: 0.875rem;
+    }
+
+    .product-card {
+        width: 160px;
+    }
+
+    .product-card__image-container {
+        height: 120px;
+    }
+
+    .product-card__content {
+        padding: 0.625rem;
+    }
+
+    .product-card__title {
+        font-size: 0.938rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .product-card__category {
+        font-size: 0.75rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .product-card__price {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .product-card__button {
+        padding: 0.5rem;
+        font-size: 0.813rem;
+    }
+}

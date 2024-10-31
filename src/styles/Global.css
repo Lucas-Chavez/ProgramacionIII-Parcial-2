@@ -1,0 +1,163 @@
+/* ==========================================================================
+    Global.css - Tabla de Contenido
+    ==========================================================================
+    1. Importación de Fuentes
+    2. Variables CSS Globales
+    3. Estilos Base
+    4. Estilos de Layout (Grid)
+    5. Media Queries (Móviles y Tablets)
+    6. Estilos para Notificaciones
+    ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* 1. Importación de Fuentes
+/* -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* -------------------------------------------------------------------------- */
+/* 2. Variables CSS Globales
+/* -------------------------------------------------------------------------- */
+:root {
+    --primary-color: #4CAF50; /* Color principal */
+    --text-color: #333; /* Color del texto */
+    --hover-color: #45a049; /* Color al pasar el mouse */
+    --hover-bg: rgba(255, 255, 255, 0.05); /* Fondo al pasar el mouse */
+    --active-bg: rgba(255, 255, 255, 0.08); /* Fondo activo */
+    --border-color: rgba(255, 255, 255, 0.1); /* Color de borde */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Estilos Base
+/* -------------------------------------------------------------------------- */
+html, body {
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    margin: 0; /* Sin márgenes */
+    padding: 0; /* Sin padding */
+    overflow: hidden; /* Ocultar desbordes */
+}
+
+* {
+    margin: 0; /* Sin márgenes para todos los elementos */
+    padding: 0; /* Sin padding para todos los elementos */
+    box-sizing: border-box; /* Incluir padding y borde en el tamaño total */
+    font-family: 'Poppins', sans-serif; /* Fuente principal */
+}
+
+.body {
+    min-height: 100vh; /* Altura mínima de la vista */
+    width: 100%; /* Ancho completo */
+    display: grid; /* Usar grid layout */
+    grid-template-areas:
+        "header header header" /* Área del encabezado */
+        "left main right"; /* Áreas de barra lateral y contenido principal */
+    grid-template-columns: 250px minmax(0, 1fr) 350px; /* Columnas del layout */
+    grid-template-rows: 80px 1fr; /* Filas del layout */
+    background-color: #f5f5f5; /* Color de fondo */
+    overflow-x: hidden; /* Ocultar desbordes horizontales */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Estilos de Layout (Grid)
+/* -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    html {
+        overflow: auto; /* Habilitar scroll en móviles */
+        height: auto; /* Altura automática */
+    }
+
+    .body {
+        grid-template-areas:
+            "header" /* Área del encabezado */
+            "left" /* Área de la barra lateral izquierda */
+            "main" /* Área del contenido principal */
+            "right"; /* Área de la barra lateral derecha */
+        grid-template-columns: 100%; /* Columnas a 100% */
+        grid-template-rows: auto auto 1fr auto; /* Filas automáticas */
+        width: 100%; /* Ancho completo */
+        min-height: 100vh; /* Altura mínima de la vista */
+    }
+}
+
+/* Media queries para tabletas */
+@media (min-width: 481px) and (max-width: 1024px) {
+    html, body {
+        overflow: auto; /* Habilitar scroll en tabletas */
+        height: auto; /* Altura automática */
+    }
+
+    .body {
+        grid-template-areas:
+            "header" /* Área del encabezado */
+            "left" /* Área de la barra lateral izquierda */
+            "main" /* Área del contenido principal */
+            "right"; /* Área de la barra lateral derecha */
+        grid-template-columns: 100%; /* Columnas a 100% */
+        grid-template-rows: auto auto 1fr auto; /* Filas automáticas */
+        overflow: hidden; /* Ocultar desbordes */
+        height: auto; /* Altura automática */
+        min-height: 100vh; /* Altura mínima de la vista */
+        background-color: #fff; /* Color de fondo */
+        gap: 1rem; /* Espacio entre secciones */
+    }
+}
+
+/* Media query para ajustes de altura en rotación de tablet */
+@media (min-width: 481px) and (max-width: 1024px) and (max-height: 768px) {
+    .body {
+        min-height: 100vh; /* Altura mínima de la vista */
+    }
+
+    .header {
+        position: sticky; /* Fijar el encabezado al hacer scroll */
+        top: 0; /* Posición en la parte superior */
+    }
+
+    .main {
+        flex: 1; /* Flex para el contenido principal */
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. Estilos para Notificaciones
+/* -------------------------------------------------------------------------- */
+.notification {
+    position: absolute; /* Posición absoluta */
+    top: 8%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajuste para centrar la notificación */
+    z-index: 1000; /* Nivel de apilamiento */
+    padding: 1rem; /* Espaciado interno */
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 0.9rem; /* Tamaño de fuente */
+    color: #fff; /* Color del texto */
+    background-color: var(--error-color, #dc3545); /* Color de fondo por defecto (rojo) */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    opacity: 0.9; /* Opacidad */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+    width: 90%; /* Ancho máximo relativo */
+    max-width: 500px; /* Ancho máximo para pantallas grandes */
+    text-align: center; /* Alinear texto al centro */
+}
+
+.notification--success {
+    background-color: var(--success-color, #28a745); /* Color verde para éxito */
+}
+
+.notification--error {
+    background-color: var(--error-color, #dc3545); /* Color rojo para errores */
+}
+
+.notification--info {
+    background-color: var(--info-color, #17a2b8); /* Color azul para información */
+}
+
+.notification.show {
+    opacity: 1; /* Visibilidad total */
+    transform: translateY(0); /* Sin desplazamiento vertical */
+}
+
+.notification.hide {
+    opacity: 0; /* Invisibilidad */
+    transform: translateY(-20px); /* Desplazamiento hacia arriba */
+}

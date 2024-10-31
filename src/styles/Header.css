@@ -1,0 +1,198 @@
+/* ==========================================================================
+    Header.css - Tabla de Contenido
+    ==========================================================================
+    1. Estilos Generales del Encabezado
+    2. Estilos para el Contenedor de Búsqueda
+    3. Estilos del Input de Búsqueda
+    4. Estilos del Botón de Búsqueda
+    5. Estilos del Icono y Texto de Búsqueda
+    6. Media Queries para Móvil
+    7. Media Queries para Pantallas Muy Pequeñas
+    8. Media Queries para Tablet
+    ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* 1. Estilos Generales del Encabezado
+/* -------------------------------------------------------------------------- */
+.header {
+    grid-area: header; /* Área del grid */
+    background-color: #333; /* Color de fondo */
+    padding: 1rem; /* Padding interno */
+    display: flex; /* Uso de flexbox */
+    align-items: center; /* Alineación vertical */
+    justify-content: center; /* Alineación horizontal */
+    width: 100%; /* Ancho total */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Estilos para el Contenedor de Búsqueda
+/* -------------------------------------------------------------------------- */
+.header__search-container {
+    width: 100%; /* Ancho total */
+    max-width: 600px; /* Ancho máximo */
+    display: flex; /* Uso de flexbox */
+    justify-content: center; /* Centrado horizontal */
+    padding: 0 1rem; /* Padding interno */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Estilos del Input de Búsqueda
+/* -------------------------------------------------------------------------- */
+.header__search-wrapper {
+    display: flex; /* Uso de flexbox */
+    gap: 0.5rem; /* Espacio entre elementos */
+    width: 100%; /* Ancho total */
+    align-items: center; /* Alineación vertical */
+}
+
+.header__search-input {
+    flex: 1; /* Permite que el input crezca */
+    padding: 0.5rem 1rem; /* Padding interno */
+    border: 2px solid #4a4a4a; /* Bordes del input */
+    border-radius: 4px; /* Esquinas redondeadas */
+    font-size: 1rem; /* Tamaño de fuente */
+    background-color: #fff; /* Color de fondo */
+    transition: border-color 0.3s ease; /* Transición suave para el borde */
+    min-width: 0; /* Previene desbordamiento */
+}
+
+.header__search-input:focus {
+    outline: none; /* Sin borde de enfoque */
+    border-color: #666; /* Color de borde al enfocar */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Estilos del Botón de Búsqueda
+/* -------------------------------------------------------------------------- */
+.header__search-button {
+    display: flex; /* Uso de flexbox */
+    align-items: center; /* Alineación vertical */
+    justify-content: center; /* Alineación horizontal */
+    gap: 0.5rem; /* Espacio entre elementos */
+    padding: 0.5rem 1rem; /* Padding interno */
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin bordes */
+    border-radius: 4px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cambia a puntero al pasar el ratón */
+    transition: background-color 0.3s ease; /* Transición suave para el fondo */
+    min-width: fit-content; /* Asegura que el botón no se encoja demasiado */
+}
+
+.header__search-button:hover {
+    background-color: #45a049; /* Color de fondo al pasar el ratón */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. Estilos del Icono y Texto de Búsqueda
+/* -------------------------------------------------------------------------- */
+.header__search-icon {
+    width: 20px; /* Ancho del icono */
+    height: 20px; /* Alto del icono */
+    filter: brightness(0) invert(1); /* Invierte el color */
+}
+
+.header__search-text {
+    font-size: 1rem; /* Tamaño de fuente */
+    white-space: nowrap; /* Previene que el texto se rompa */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. Media Queries para Móvil
+/* -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .header {
+        padding: 0.75rem 0; /* Reducido el padding horizontal */
+    }
+
+    .header__search-container {
+        padding: 0 0.75rem; /* Ajustado el padding */
+        max-width: 100%; /* Asegura que use todo el ancho disponible */
+    }
+    
+    .header__search-wrapper {
+        gap: 0.375rem; /* Reducido el espacio entre elementos */
+    }
+
+    .header__search-input {
+        padding: 0.5rem 0.75rem; /* Ajustado el padding */
+        font-size: 0.9375rem; /* Ligeramente reducido el tamaño de fuente */
+    }
+    
+    .header__search-button {
+        padding: 0.5rem 0.75rem; /* Ajustado el padding */
+        min-width: 40px; /* Ancho mínimo para el botón */
+    }
+    
+    .header__search-text {
+        display: none; /* Oculta el texto en móvil */
+    }
+
+    .header__search-icon {
+        width: 18px; /* Ligeramente reducido */
+        height: 18px; /* Ligeramente reducido */
+        margin: 0; /* Elimina cualquier margen */
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 7. Media Queries para Pantallas Muy Pequeñas
+/* -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+    .header {
+        padding: 0.5rem 0; /* Reducido el padding vertical */
+    }
+
+    .header__search-container {
+        padding: 0 0.5rem; /* Ajustado el padding */
+    }
+    
+    .header__search-input {
+        padding: 0.4375rem 0.625rem; /* Ajustado el padding */
+        font-size: 0.875rem; /* Tamaño de fuente reducido */
+    }
+    
+    .header__search-button {
+        padding: 0.4375rem; /* Ajustado el padding */
+    }
+    
+    .header__search-icon {
+        width: 16px; /* Ancho del icono reducido */
+        height: 16px; /* Alto del icono reducido */
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 8. Media Queries para Tablet
+/* -------------------------------------------------------------------------- */
+@media (min-width: 481px) and (max-width: 1024px) {
+    .header {
+        position: sticky; /* Fija el encabezado al desplazarse */
+        top: 0; /* Posición superior */
+        z-index: 100; /* Asegura que esté encima de otros elementos */
+        padding: 0.75rem 0; /* Padding ajustado */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra del encabezado */
+    }
+
+    .header__search-container {
+        padding: 0 1rem; /* Ajustado el padding */
+        max-width: 100%; /* Asegura que use todo el ancho disponible */
+    }
+    
+    .header__search-wrapper {
+        gap: 0.5rem; /* Espacio entre elementos */
+        flex-wrap: nowrap; /* Evita que los elementos se envuelvan */
+    }
+
+    .header__search-input {
+        padding: 0.5rem 0.75rem; /* Padding ajustado */
+        font-size: 0.9375rem; /* Tamaño de fuente ajustado */
+        min-width: 0; /* Permite que el input se encoja */
+    }
+    
+    .header__search-button {
+        padding: 0.5rem 1rem; /* Padding ajustado */
+        white-space: nowrap; /* Evita que el texto del botón se rompa */
+        flex-shrink: 0; /* Evita que el botón se encoja */
+    }
+}

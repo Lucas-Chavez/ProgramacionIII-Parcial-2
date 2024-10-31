@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>Proyecto Final</title>
+    </head>
+    <body class="body">
+        <header class="header">
+        <div class="header__search-container">
+            <div class="header__search-wrapper">
+                <input type="text" class="header__search-input" placeholder="Buscar..."/>
+                <button class="header__search-button">
+                    <img src="/src/assets/icons/search-icon.svg" class="header__search-icon" alt="Buscar"/>
+                    <span class="header__search-text">Buscar</span>
+                </button>
+            </div>
+        </div>
+        </header>
+        <aside class="sidebar-left">
+        <nav class="sidebar-left__nav">
+            <div class="sidebar-section">
+                <button class="sidebar-section__header">
+                    <h2 class="sidebar-section__title">Categorías</h2>
+                    <img src="/src/assets/icons/display-icon.svg" alt="Expandir" class="sidebar-section__icon" />
+                </button>
+                <ul class="sidebar-section__list sidebar-section__list--expanded">
+                    <li class="sidebar-section__item">
+                        <a href="#" class="sidebar-section__link sidebar-section__link--active" data-category="all">
+                            Todos los productos
+                        </a>
+                    </li>
+                    <li class="sidebar-section__item">
+                        <a href="#" class="sidebar-section__link" data-category="Hamburguesas">
+                            Hamburguesas
+                        </a>
+                    </li>
+                    <li class="sidebar-section__item">
+                        <a href="#" class="sidebar-section__link" data-category="Papas">
+                            Papas
+                        </a>
+                    </li>
+                    <li class="sidebar-section__item">
+                        <a href="#" class="sidebar-section__link" data-category="Bebidas">
+                            Bebidas
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <button class="sidebar-section__header">
+                    <h2 class="sidebar-section__title">Ordenar por Precio</h2>
+                    <img src="/src/assets/icons/display-icon.svg" alt="Expandir" class="sidebar-section__icon" />
+                </button>
+                <ul class="sidebar-section__list sidebar-section__list--expanded">
+                    <li class="sidebar-section__item">
+                        <button class="sidebar-section__button sidebar-section__button--active" data-order="desc">
+                            Mayor a Menor
+                        </button>
+                    </li>
+                    <li class="sidebar-section__item">
+                        <button class="sidebar-section__button" data-order="asc">
+                            Menor a Mayor
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        </aside>
+
+        <main class="main">
+            <div class="main__content">
+
+            </div>
+        </main>
+        
+        <aside class="sidebar-right">
+            <div class="sidebar-right__content">
+                <h2 class="sidebar-right__title">Agregar o eliminar un producto</h2>
+                <div id="notification" class="notification" style="display: none;"></div>
+                <form id="productForm" class="sidebar-right__form">
+                    <div class="form-group">
+                        <label for="productName">Nombre del producto</label>
+                        <input type="text" id="productName" name="productName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productImage">URL de la imagen</label>
+                        <input type="url" id="productImage" name="productImage" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productPrice">Precio</label>
+                        <input type="number" id="productPrice" name="productPrice" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productCategory">Categoría</label>
+                        <select id="productCategory" name="productCategory" required>
+                            <option value="">Seleccionar categoría</option>
+                            <option value="Hamburguesas">Hamburguesas</option>
+                            <option value="Papas">Papas</option>
+                            <option value="Bebidas">Bebidas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="button" id="cancelBtn" class="btn btn-cancel">Cancelar</button>
+                        <button type="submit" id="acceptBtn" class="btn btn-accept">Aceptar</button>
+                        <button type="button" id="deleteBtn" class="btn btn-delete">Eliminar</button>
+                    </div>
+                </form>
+            </div>
+        </aside>
+        <script type="module" src="/main.js"></script>
+    </body>
+</html>

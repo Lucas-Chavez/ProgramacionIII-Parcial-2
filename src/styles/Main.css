@@ -1,0 +1,57 @@
+/* ==========================================================================
+    Main.css - Tabla de Contenido
+    ==========================================================================
+    1. Estilos de la sección principal (Main)
+    2. Contenido de la sección principal (Main Content)
+    3. Media Queries para dispositivos móviles
+    4. Media Queries para Tablet
+    ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* 1. Estilos de la sección principal (Main)                                 */
+/* -------------------------------------------------------------------------- */
+.main {
+    grid-area: main; /* Define el área de la cuadrícula para el componente principal */
+    background-color: #fff; /* Color de fondo blanco para la sección principal */
+    min-width: 0; /* Previene desbordamiento */
+    max-width: 100%; /* Asegura que la sección no exceda el ancho máximo */
+    overflow: auto; /* Permite el desplazamiento si el contenido es más grande que el contenedor */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Contenido de la sección principal (Main Content)                       */
+/* -------------------------------------------------------------------------- */
+.main__content {
+    background-color: #f8f8f8; /* Color de fondo gris claro para el contenido principal */
+    min-height: 100%; /* Establece una altura mínima para llenar el contenedor */
+    overflow: hidden; /* Previene desbordamiento de contenido */
+    padding: 2%; /* Espaciado interno de 2% en todos los lados */
+    padding-bottom: 8%; /* Espaciado interno de 8% inferior */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Media Queries para dispositivos móviles                                  */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .main__content {
+        height: auto; /* Ajusta la altura automáticamente en móviles */
+        background-color: #fff; /* Cambia el color de fondo a blanco para móviles */
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Media Queries para Tablet                                               */
+/* -------------------------------------------------------------------------- */
+@media (min-width: 481px) and (max-width: 1024px) {
+    .main {
+        height: auto; /* Ajusta la altura automáticamente en tabletas */
+        min-height: 0; /* Removido min-height fijo */
+        overflow: visible; /* Permite que el contenido exceda el área visible */
+        background-color: #fff; /* Asegura que el fondo sea blanco */
+    }
+
+    .main__content {
+        height: auto; /* Ajusta la altura automáticamente en tabletas */
+        background-color: #fff; /* Cambia el color de fondo a blanco */
+    }
+}
